@@ -2,6 +2,7 @@ FROM golang:1.17
 
 WORKDIR /go/src
 COPY . .
+EXPOSE 3000
 RUN go build -o /go/bin/gateway main.go 
 
 CMD ["/go/bin/gateway"]

@@ -6,7 +6,7 @@ services:
     volumes:
       - .:/uploader/src
     ports:
-      - 8080:3000
+      - 3000:3000
     environment:
       - AWS_REGION=${AWS_REGION}
       - AWS_ACCESS_KEY=${AWS_ACCESS_KEY}

@@ -41,6 +41,9 @@ func configRoutes() {
 	port := ":3000"
 	router := mux.NewRouter().StrictSlash(true)
 	router.Use(mux.CORSMethodMiddleware(router))
+	router.HandleFunc("/", func(w http.ResponseWriter, _ *http.Request) {
+		fmt.Fprintf(w, "Pong")
+	}).Methods("GET")
 	router.PathPrefix("/uploaded").Handler(http.StripPrefix("/uploaded", http.FileServer(http.Dir("upload"))))
 	router.HandleFunc("/upload", images_controller.Upload).Methods("POST", http.MethodOptions)
 	router.HandleFunc("/images", images_controller.GetAll).Methods("GET", http.MethodOptions)

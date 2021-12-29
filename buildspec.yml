@@ -3,8 +3,6 @@ version: 0.2
 phases:
   pre_build: 
       commands:
-        - echo Testing app
-        - go test ./...
         - echo Logging into ECR...
         - aws ecr get-login-password --region sa-east-1 | docker login --username AWS --password-stdin 735788304992.dkr.ecr.sa-east-1.amazonaws.com
   build:

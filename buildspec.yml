@@ -11,7 +11,7 @@ phases:
   build:
     commands:
       - echo Building the Docker image...
-      - docker build -f ./.docker/Dockerfile.prod -t demo1 . --build-arg DATABASE_TYPE=$IMAGE_REPO_NAME:$DATABASE_TYPE --build-arg DATABASE_CONNECTION=$IMAGE_REPO_NAME:$DATABASE_CONNECTION --build-arg USE_AWS=$IMAGE_REPO_NAME:$USE_AWS --build-arg S3_NAME=$IMAGE_REPO_NAME:$S3_NAME --build-arg S3_URL=$IMAGE_REPO_NAME:$S3_URL --build-arg AWS_REGION=$IMAGE_REPO_NAME:$AWS_REGION --build-arg AWS_ACCESS_KEY=$IMAGE_REPO_NAME:$AWS_ACCESS_KEY --build-arg AWS_SECRET=$IMAGE_REPO_NAME:$AWS_SECRET
+      - docker build -f ./.docker/Dockerfile.prod -t demo1 . --build-arg DATABASE_TYPE=$IMAGE_REPO_NAME$DATABASE_TYPE --build-arg DATABASE_CONNECTION=$IMAGE_REPO_NAME$DATABASE_CONNECTION --build-arg USE_AWS=$IMAGE_REPO_NAME$USE_AWS --build-arg S3_NAME=$IMAGE_REPO_NAME$S3_NAME --build-arg S3_URL=$IMAGE_REPO_NAME$S3_URL --build-arg AWS_REGION=$IMAGE_REPO_NAME$AWS_REGION --build-arg AWS_ACCESS_KEY=$IMAGE_REPO_NAME$AWS_ACCESS_KEY --build-arg AWS_SECRET=$IMAGE_REPO_NAME$AWS_SECRET
       - docker tag demo1:latest 735788304992.dkr.ecr.sa-east-1.amazonaws.com/demo1:latest
   post_build:
     commands:

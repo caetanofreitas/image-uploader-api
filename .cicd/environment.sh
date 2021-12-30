@@ -1,3 +1,4 @@
 #!/bin/bash
 printenv >> .env
-exit 0
+cat .env
+exit 1

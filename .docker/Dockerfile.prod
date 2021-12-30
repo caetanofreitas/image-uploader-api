@@ -1,8 +1,10 @@
 FROM golang:1.17
 
 WORKDIR /go/src
-COPY . .
+COPY ../. .
 EXPOSE 3000
-RUN go build -o /go/bin/gateway main.go 
+
+RUN touch /root/.bashrc | echo "PS1='\w\$ '" >> /root/.bashrc
+RUN go build -o /go/bin/gateway main.go
 
 CMD ["/go/bin/gateway"]

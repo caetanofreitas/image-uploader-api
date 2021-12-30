@@ -2,9 +2,9 @@ package get_all_images
 
 import (
 	"fmt"
-	"os"
 	"strings"
 	"uploader/entity"
+	env "uploader/environment"
 	"uploader/utils/upload_status"
 )
 
@@ -20,8 +20,8 @@ func PrepareOutput(result []entity.Image) []GetAllImagesDtoOutput {
 	var images []GetAllImagesDtoOutput
 	var s3Url string
 
-	if s3Url = os.Getenv("S3_URL"); strings.Compare(s3Url, "") == 0 {
-		if s3Url = os.Getenv("UPLOAD_URL"); strings.Compare(s3Url, "") == 0 {
+	if s3Url = env.S3_URL; strings.Compare(s3Url, "") == 0 {
+		if s3Url = env.UPLOAD_URL; strings.Compare(s3Url, "") == 0 {
 			s3Url = "http://localhost:3000/uploaded"
 		}
 	}

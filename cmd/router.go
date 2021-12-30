@@ -6,8 +6,8 @@ import (
 	"log"
 	"net/http"
 
-	"os"
 	"uploader/adapter/http/controllers/images_controller"
+	env "uploader/environment"
 
 	_ "github.com/go-sql-driver/mysql"
 	"github.com/gorilla/mux"
@@ -15,8 +15,8 @@ import (
 )
 
 func validateDb() {
-	dbType := os.Getenv("DATABASE_TYPE")
-	conn := os.Getenv("DATABASE_CONNECTION")
+	dbType := env.DATABASE_TYPE
+	conn := env.DATABASE_CONNECTION
 	db, err := sql.Open(dbType, conn)
 	if err != nil {
 		panic(err)

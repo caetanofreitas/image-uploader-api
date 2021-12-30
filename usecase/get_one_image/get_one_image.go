@@ -2,9 +2,9 @@ package get_one_image
 
 import (
 	"fmt"
-	"os"
 	"strings"
 	"uploader/entity"
+	env "uploader/environment"
 	"uploader/utils/upload_status"
 )
 
@@ -19,8 +19,8 @@ func NewGetOneImage(repo entity.ImageRepository) *GetOneImage {
 func PrepareOutput(item entity.Image) GetOneImageDtoOutput {
 	var s3Url string
 
-	if s3Url = os.Getenv("S3_URL"); strings.Compare(s3Url, "") == 0 {
-		if s3Url = os.Getenv("UPLOAD_URL"); strings.Compare(s3Url, "") == 0 {
+	if s3Url = env.S3_URL; strings.Compare(s3Url, "") == 0 {
+		if s3Url = env.UPLOAD_URL; strings.Compare(s3Url, "") == 0 {
 			s3Url = "http://localhost:3000/uploaded"
 		}
 	}

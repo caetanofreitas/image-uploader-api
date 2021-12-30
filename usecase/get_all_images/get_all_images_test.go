@@ -1,11 +1,11 @@
 package get_all_images
 
 import (
-	"os"
 	"strings"
 	"testing"
 	"uploader/entity"
 	mock_entity "uploader/entity/mock"
+	env "uploader/environment"
 	"uploader/utils/formats"
 	"uploader/utils/upload_status"
 
@@ -17,8 +17,8 @@ func TestGetAllImages(t *testing.T) {
 	var expectedOutput []GetAllImagesDtoOutput
 	var s3Url string
 
-	if s3Url = os.Getenv("S3_URL"); strings.Compare(s3Url, "") == 0 {
-		if s3Url = os.Getenv("UPLOAD_URL"); strings.Compare(s3Url, "") == 0 {
+	if s3Url = env.S3_URL; strings.Compare(s3Url, "") == 0 {
+		if s3Url = env.UPLOAD_URL; strings.Compare(s3Url, "") == 0 {
 			s3Url = "http://localhost:3000/uploaded"
 		}
 	}

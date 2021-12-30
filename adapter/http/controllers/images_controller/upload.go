@@ -5,13 +5,13 @@ import (
 	"errors"
 	"io/ioutil"
 	"net/http"
-	"os"
 	"strconv"
 	"strings"
 	"uploader/adapter/repository"
 	aws_uploader "uploader/adapter/uploader/aws"
 	local_uploader "uploader/adapter/uploader/local"
 	"uploader/entity"
+	env "uploader/environment"
 	"uploader/usecase/upload_image"
 	"uploader/utils/errors_messages"
 
@@ -62,15 +62,15 @@ func Upload(w http.ResponseWriter, r *http.Request) {
 	db := ConnectDb()
 	repo := repository.NewImageRepository(db)
 
-	useAws := os.Getenv("USE_AWS")
+	useAws := env.USE_AWS
 
 	var uploader entity.ImageUploader
 	if v, err := strconv.ParseBool(useAws); v && err == nil {
 		uploader = aws_uploader.NewAwsUploader(
-			os.Getenv("AWS_REGION"),
-			os.Getenv("AWS_ACCESS_KEY"),
-			os.Getenv("AWS_SECRET"),
-			os.Getenv("S3_NAME"),
+			env.AWS_REGION,
+			env.AWS_ACCESS_KEY,
+			env.AWS_SECRET,
+			env.S3_NAME,
 		)
 	} else {
 		uploader = local_uploader.NewLocalUploader()

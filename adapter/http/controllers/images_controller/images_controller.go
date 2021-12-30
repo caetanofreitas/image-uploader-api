@@ -5,7 +5,7 @@ import (
 	"encoding/json"
 	"log"
 	"net/http"
-	"os"
+	env "uploader/environment"
 	"uploader/usecase/upload_image"
 
 	_ "github.com/go-sql-driver/mysql"
@@ -15,8 +15,8 @@ import (
 var UploadChannel = make(chan upload_image.UploadImageDtoOutput)
 
 func ConnectDb() *sql.DB {
-	dbType := os.Getenv("DATABASE_TYPE")
-	conn := os.Getenv("DATABASE_CONNECTION")
+	dbType := env.DATABASE_TYPE
+	conn := env.DATABASE_CONNECTION
 	db, err := sql.Open(dbType, conn)
 	if err != nil {
 		log.Fatal(err)

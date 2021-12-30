@@ -1,7 +1,7 @@
 FROM golang:1.17
 
 WORKDIR /uploader/src
-COPY ../. .
+COPY . .
 EXPOSE 3000
 
 CMD ["tail", "-f", "/dev/null"]

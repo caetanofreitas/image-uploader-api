@@ -5,7 +5,10 @@ import (
 	env "uploader/environment"
 )
 
-func main() {
+func init() {
 	env.ValidateEnvironment()
+}
+
+func main() {
 	cmd.ExecuteRouter()
 }

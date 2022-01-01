@@ -1,3 +1,4 @@
 .env
 /upload/*
 database.db
+/adapter/repository/database-test.db
